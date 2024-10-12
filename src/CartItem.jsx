@@ -24,15 +24,15 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleDecrement = (item) => {
-   if(item.length > 0){
-    dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 })); 
-   }else{
-    dispatch(removeItem(item));
-   }
+    if (item.quantity > 1) {
+        dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 })); 
+      } else {
+        dispatch(removeItem(item.name));
+    }
   };
 
   const handleRemove = (item) => {
-    dispatch(removeItem(item));
+    dispatch(removeItem(item.name));
   };
 
   // Calculate total cost based on quantity for an item
